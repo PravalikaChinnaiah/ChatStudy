@@ -94,17 +94,20 @@ print("Connected to:", addr)
 
 while True:
     # Receive message from client
+    
     client_msg = conn.recv(1024).decode()
+    
     print("Client:", client_msg)
 
     if client_msg.lower() == "exit":
+    
         break
-
-    # Send message to client
     msg = input("Server: ")
+    
     conn.send(msg.encode())
 
     if msg.lower() == "exit":
+    
         break
 
 conn.close()
@@ -124,18 +127,21 @@ port = 12345
 client.connect((host, port))
 
 while True:
-    # Send message to server
+  
     msg = input("Client: ")
+    
     client.send(msg.encode())
 
     if msg.lower() == "exit":
+    
         break
-
-    # Receive reply from server
+        
     server_msg = client.recv(1024).decode()
+    
     print("Server:", server_msg)
 
     if server_msg.lower() == "exit":
+    
         break
 
 client.close()
